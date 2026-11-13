@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CO-OP BOOTH 98 // RETRO MULTI-LINK</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#516600",
+            "on-primary-fixed": "#161e00",
+            "secondary-fixed": "#ffdbd0",
+            "on-primary-container": "#2e3c00",
+            "surface-bright": "#fef9ed",
+            "on-surface": "#1d1c15",
+            "on-primary-fixed-variant": "#3c4d00",
+            "surface-container": "#f2eee1",
+            "primary-fixed-dim": "#b1d43d",
+            "surface-container-highest": "#e6e2d6",
+            "tertiary-container": "#7eab75",
+            "background": "#fef9ed",
+            "surface-variant": "#e6e2d6",
+            "on-tertiary-container": "#163f15",
+            "error-container": "#ffdad6",
+            "surface-dim": "#dedace",
+            "on-surface-variant": "#454936",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#ece8dc",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#521300",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "outline": "#757964",
+            "on-tertiary-fixed-variant": "#275024",
+            "secondary": "#ae3200",
+            "inverse-primary": "#b1d43d",
+            "primary-container": "#8bac0f",
+            "inverse-on-surface": "#f5f1e4",
+            "on-secondary-fixed-variant": "#852400",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#a4d39a",
+            "tertiary": "#3f6839",
+            "outline-variant": "#c5c9b1",
+            "secondary-container": "#fd591e",
+            "surface-container-low": "#f8f3e7",
+            "primary": "#516600",
+            "surface": "#fef9ed",
+            "tertiary-fixed": "#bfefb4",
+            "primary-fixed": "#ccf157",
+            "inverse-surface": "#323129",
+            "on-background": "#1d1c15",
+            "on-tertiary-fixed": "#002202",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-secondary-fixed": "#3a0b00"
+          },
+          fontFamily: {
+            mono: ["Space Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #fef9ed;
+      color: #1d1c15;
+      font-family: 'Space Mono', monospace;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      user-select: none;
+    }
+    .crt-grid {
+      background-image: repeating-linear-gradient(0deg, rgba(15, 56, 15, 0.08) 0px, rgba(15, 56, 15, 0.08) 1px, transparent 1px, transparent 2px);
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between bg-surface text-on-surface overflow-hidden">
+<!-- TOP HEADER / HARDWARE COMM BAR -->
+<header class="w-full shrink-0 z-50 bg-surface-container-high border-b border-outline-variant/50 shadow-sm">
+<div class="h-11 max-w-6xl mx-auto px-4 flex items-center justify-between gap-2">
+<!-- Title & Branding -->
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 bg-primary text-on-primary font-bold rounded flex items-center justify-center text-xs shadow-inner">
+          98
+        </div>
+<div class="flex flex-col">
+<span class="text-xs sm:text-sm font-bold uppercase tracking-tight leading-none text-on-surface">CO-OP BOOTH 98</span>
+<span class="text-[9px] text-on-surface-variant font-mono uppercase tracking-widest leading-tight">MULTI-LINK v2.4</span>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 px-2 py-0.5 bg-surface-container rounded ml-2 border border-outline-variant/40">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[9px] text-primary font-bold tracking-wider">CABLE: CONNECTED</span>
+</div>
+</div>
+<!-- Navigation & Mode Tabs -->
+<nav class="hidden md:flex items-center gap-1 bg-surface-container-low p-0.5 rounded border border-outline-variant/40">
+<span class="px-2 py-0.5 rounded uppercase bg-primary-container text-on-primary-container font-bold text-[10px]">1. LOBBY // LINK</span>
+<span class="px-2 py-0.5 font-bold text-[10px] text-on-surface-variant uppercase">2. LIVE BOOTH</span>
+<span class="px-2 py-0.5 font-bold text-[10px] text-on-surface-variant uppercase">3. THERMAL PRINT</span>
+</nav>
+<!-- Right controls / SFX -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1 px-2 py-1 bg-surface rounded border border-outline-variant/60 text-[10px] font-bold text-on-surface shadow-sm active:translate-y-0.5" id="sfx-toggle">
+<span class="material-symbols-outlined text-[13px] text-secondary">volume_up</span>
+<span class="hidden xs:inline" id="sfx-label">SFX: ON</span>
+</button>
+<div class="flex flex-col items-end text-[9px] text-on-surface-variant font-mono leading-none">
+<span class="text-secondary font-bold">PWR: 100%</span>
+<span>ROM #98OK</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN CHASSIS CONTAINER (Fitting strictly inside viewport) -->
+<main class="w-full flex-1 min-h-0 flex items-center justify-center p-2 sm:p-3 overflow-hidden">
+<div class="w-full max-w-4xl max-h-full flex flex-col justify-between">
+<!-- Retro Handheld Console Body -->
+<div class="w-full bg-[#dedace] border-2 border-[#c5c9b1] rounded-2xl p-2.5 sm:p-4 shadow-[0_8px_0_#9a988d,0_12px_20px_rgba(0,0,0,0.18)] flex flex-col gap-2">
+<!-- Chassis Top Bezel Bar -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-inner animate-pulse"></span>
+<span class="text-[11px] font-bold tracking-wider text-on-surface uppercase">PORTABLE CO-OP TERMINAL</span>
+<span class="hidden sm:inline text-[9px] text-on-surface-variant bg-surface px-1.5 py-0.5 rounded border border-outline-variant font-mono">DMG-98</span>
+</div>
+<!-- Tactile 1P / 2P Switcher -->
+<div class="flex items-center gap-1.5 bg-inverse-surface p-1 rounded-md shadow-inner">
+<span class="text-[9px] text-[#ccf157] font-bold px-1 hidden xs:inline tracking-wider">MODE:</span>
+<button class="px-2 py-0.5 text-[10px] font-bold uppercase rounded transition-all bg-surface text-secondary shadow-[0_1px_2px_rgba(0,0,0,0.3)] flex items-center gap-1" id="tab-2p" onclick="switchPlayerMode('2p')">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse" id="led-2p"></span>
+              2P LINK
+            </button>
+<button class="px-2 py-0.5 text-[10px] font-bold uppercase rounded transition-all text-surface-variant hover:text-surface flex items-center gap-1" id="tab-1p" onclick="switchPlayerMode('1p')">
+<span class="w-1.5 h-1.5 rounded-full bg-outline" id="led-1p"></span>
+              1P SOLO
+            </button>
+</div>
+</div>
+<!-- CRT Display Surround (Dark Slate Frame) -->
+<div class="w-full bg-inverse-surface rounded-xl p-2 sm:p-3 shadow-inner border border-[#1d1c15]">
+<!-- Display Status Bar -->
+<div class="flex items-center justify-between text-[9px] text-surface-container-high mb-1.5 px-1 font-mono uppercase">
+<span class="flex items-center gap-1 text-primary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed animate-ping"></span>
+              SERIAL: 16-BIT 4.19MHz
+            </span>
+<span class="text-secondary-fixed" id="bus-status">COMM BUS: 2-PLAYER LINK ACTIVE</span>
+<span class="bg-[#24231d] px-1.5 py-0.5 rounded text-primary-fixed">CH-01</span>
+</div>
+<!-- Olive Green Dot-Matrix CRT Viewport -->
+<div class="w-full bg-[#8bac0f] border-2 border-[#516600] rounded-lg p-2.5 sm:p-3 crt-grid text-[#161e00] shadow-inner relative overflow-hidden">
+<!-- CRT Filter Palette Bar -->
+<div class="flex items-center justify-between pb-1.5 border-b border-[#516600]/30 mb-2">
+<div class="flex items-center gap-1">
+<span class="text-[9px] font-bold tracking-wider mr-1">PALETTE:</span>
+<button class="palette-btn px-1.5 py-0.5 text-[9px] font-bold uppercase bg-surface text-on-surface rounded shadow-xs" onclick="setPalette(this, 'GB 4-BIT')">[GB 4-BIT]</button>
+<button class="palette-btn px-1.5 py-0.5 text-[9px] font-bold uppercase hover:bg-surface/60 rounded" onclick="setPalette(this, 'PS1 DITHER')">[PS1 DITHER]</button>
+<button class="palette-btn px-1.5 py-0.5 text-[9px] font-bold uppercase hover:bg-surface/60 rounded" onclick="setPalette(this, 'THERMAL')">[THERMAL]</button>
+</div>
+<div class="text-[9px] font-bold uppercase font-mono">
+                FPS: 60 // ISO 100
+              </div>
+</div>
+<!-- VIEW 2P (Co-op Link Room) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center" id="view-2p">
+<div class="md:col-span-7 flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-[9px] font-bold tracking-wider uppercase opacity-80">
+<span class="material-symbols-outlined text-[12px]">cable</span>
+                  DUAL-CAMERA SYNCHRONIZATION
+                </div>
+<h1 class="text-sm sm:text-base font-bold uppercase tracking-tight leading-tight m-0 text-[#161e00]">
+                  PAIR LINK ROOM TERMINAL
+                </h1>
+<p class="text-[10px] leading-tight text-[#2e3c00] max-w-md">
+                  Establish a synchronized stereo link with Player 2. Capture synchronized poses into dual monochrome thermal photo strips.
+                </p><div class="flex flex-col gap-1 py-0.5"><div class="flex items-center justify-between"><span class="text-[8px] font-bold uppercase tracking-wider text-[#161e00] flex items-center gap-1"><span class="material-symbols-outlined text-[11px]">receipt_long</span>STEREO THERMAL STRIP LAYOUT:</span><span class="text-[7px] font-mono text-[#516600] font-bold" id="p2-layout-badge">SYNC: CLASSIC 4-CUT</span></div><div class="grid grid-cols-3 gap-1.5" id="coop-templates-row"><button class="coop-layout-btn bg-white border-2 border-[#ae3200] text-[#ae3200] p-1 rounded flex items-center gap-1.5 shadow-xs transition-all" onclick="selectCoopLayout(this, 'CLASSIC 4-CUT')" type="button"><div class="w-4 h-7 bg-[#dedace] border border-[#1d1c15] p-0.5 flex flex-col justify-between shrink-0"><span class="w-full h-1 bg-[#454936] block"></span><span class="w-full h-1 bg-[#454936] block"></span><span class="w-full h-1 bg-[#454936] block"></span><span class="w-full h-1 bg-[#454936] block"></span></div><div class="flex flex-col text-left leading-none"><span class="text-[8px] font-bold text-[#1d1c15] uppercase">4-CUT STRIP</span><span class="text-[6px] font-mono text-[#454936] mt-0.5">DUAL 4-POSE</span></div></button><button class="coop-layout-btn bg-white/70 border border-[#516600]/40 text-[#161e00] p-1 rounded flex items-center gap-1.5 hover:bg-white transition-all" onclick="selectCoopLayout(this, 'ARCADE QUAD')" type="button"><div class="w-5 h-7 bg-[#dedace] border border-[#1d1c15] p-0.5 grid grid-cols-2 gap-0.5 shrink-0"><span class="w-full h-2 bg-[#454936] block"></span><span class="w-full h-2 bg-[#454936] block"></span><span class="w-full h-2 bg-[#454936] block"></span><span class="w-full h-2 bg-[#454936] block"></span></div><div class="flex flex-col text-left leading-none"><span class="text-[8px] font-bold text-[#1d1c15] uppercase">QUAD 2x2</span><span class="text-[6px] font-mono text-[#454936] mt-0.5">SPLIT PAIR</span></div></button><button class="coop-layout-btn bg-white/70 border border-[#516600]/40 text-[#161e00] p-1 rounded flex items-center gap-1.5 hover:bg-white transition-all" onclick="selectCoopLayout(this, 'WIDE POLAROID')" type="button"><div class="w-5 h-7 bg-[#dedace] border border-[#1d1c15] p-0.5 flex flex-col justify-between shrink-0"><span class="w-full h-4 bg-[#454936] block"></span><span class="w-full h-1 bg-[#c5c9b1] block"></span></div><div class="flex flex-col text-left leading-none"><span class="text-[8px] font-bold text-[#1d1c15] uppercase">POLAROID</span><span class="text-[6px] font-mono text-[#454936] mt-0.5">CO-OP SIGN</span></div></button></div></div>
+<!-- Dual Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="bg-[#ae3200] hover:bg-[#852400] text-white px-2 py-2 rounded font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1 shadow-[0_2px_0_#521300] active:translate-y-0.5 active:shadow-none transition-all" id="btn-create" onclick="play8BitBeep(700, 0.1)">
+<span class="material-symbols-outlined text-[14px]">add_circle</span>
+<span>CREATE ROOM</span>
+</button>
+<button class="bg-[#fef9ed] text-[#1d1c15] hover:bg-white px-2 py-2 rounded font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1 border border-[#516600]/40 shadow-[0_2px_0_#516600] active:translate-y-0.5 active:shadow-none transition-all" id="btn-join" onclick="play8BitBeep(560, 0.1)">
+<span class="material-symbols-outlined text-[14px]">dialpad</span>
+<span>JOIN CODE</span>
+</button>
+</div>
+<!-- Wire connection simulation -->
+<div class="bg-[#7eab75]/30 p-1.5 rounded border border-[#516600]/30 flex items-center justify-between text-[9px] mt-0.5">
+<span class="font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#ae3200] animate-pulse"></span>
+                    PACKET LATENCY: 14ms
+                  </span>
+<span class="font-mono">LINK BUFFER: 64.0 KB</span>
+</div>
+</div>
+<!-- Right Box: Room Token & QR -->
+<div class="md:col-span-5 bg-[#fef9ed] border border-[#516600]/40 rounded-lg p-2.5 text-[#1d1c15] shadow flex flex-col gap-1.5">
+<div class="flex items-center justify-between border-b border-dashed border-[#757964]/50 pb-1 text-[9px] uppercase font-bold text-[#454936]">
+<span>ROOM TOKEN</span>
+<span>#HOST-CB98</span>
+</div>
+<div class="text-center py-1 bg-[#ece8dc] rounded border border-dashed border-[#c5c9b1]">
+<span class="text-[8px] uppercase tracking-widest font-mono text-[#454936] block">SESSION CODE</span>
+<span class="text-xl font-bold tracking-widest text-[#ae3200] font-mono select-all" id="room-code-display">884-21A</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="flex-1 bg-[#516600] hover:bg-[#3c4d00] text-white py-1 rounded text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 shadow-sm active:translate-y-0.5" id="copy-btn">
+<span class="material-symbols-outlined text-[12px]">content_copy</span>
+<span id="copy-text">COPY LINK</span>
+</button>
+<button class="p-1 bg-[#e6e2d6] text-[#1d1c15] hover:bg-[#dedace] rounded border border-[#c5c9b1] active:translate-y-0.5" id="refresh-code" title="Generate New Code">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+</button>
+</div>
+<!-- Mini QR quick scan -->
+<div class="flex items-center gap-2 pt-1 border-t border-dashed border-[#757964]/40">
+<div class="w-8 h-8 bg-[#1d1c15] p-1 flex flex-col justify-between rounded shrink-0">
+<div class="flex justify-between"><span class="w-1.5 h-1.5 bg-white"></span><span class="w-1.5 h-1.5 bg-white"></span></div>
+<div class="flex justify-center"><span class="w-1.5 h-1.5 bg-white"></span></div>
+<div class="flex justify-between"><span class="w-1.5 h-1.5 bg-white"></span><span class="w-1.5 h-1.5 bg-white"></span></div>
+</div>
+<div class="flex flex-col leading-none">
+<span class="text-[9px] font-bold uppercase text-on-surface">P2 QUICK SYNC</span>
+<span class="text-[8px] text-on-surface-variant mt-0.5">Scan to pair mobile viewport</span>
+</div>
+</div>
+</div>
+</div>
+<!-- VIEW 1P (Solo Standalone Booth - Hidden by default) -->
+<div class="hidden grid-cols-1 md:grid-cols-12 gap-3 items-center" id="view-1p">
+<div class="md:col-span-7 flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-[9px] font-bold tracking-wider uppercase opacity-80">
+<span class="material-symbols-outlined text-[12px]">videocam</span>
+                  STANDALONE RETRO PHOTO BOOTH
+                </div>
+<h1 class="text-sm sm:text-base font-bold uppercase tracking-tight leading-tight m-0 text-[#161e00]">
+                  1-PLAYER RETRO STUDIO
+                </h1>
+<p class="text-[10px] leading-tight text-[#2e3c00] max-w-md">
+                  Single handheld mode. Select your thermal strip template and fire the automatic continuous timer.
+                </p>
+<!-- Template Selector -->
+<div class="flex flex-col gap-1 pt-0.5"><div class="flex items-center justify-between"><span class="text-[9px] font-bold uppercase tracking-wider text-[#2e3c00] flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">view_comfy</span>PRINT TEMPLATE LAYOUT:</span><span class="text-[8px] font-mono text-[#516600] font-bold" id="template-spec-label">57x210mm // 4 POSES</span></div><div class="grid grid-cols-3 gap-1.5" id="template-cards-grid"><button class="layout-btn bg-white border-2 border-[#ae3200] text-[#ae3200] p-1.5 rounded flex flex-col items-center gap-1 shadow-xs transition-all relative text-left group" onclick="selectTemplate(this, 'CLASSIC 4-CUT', '57x210mm // 4 POSES')" type="button"><div class="flex items-center justify-between w-full"><span class="w-1.5 h-1.5 rounded-full bg-[#ae3200] shadow-inner"></span><span class="text-[7px] font-mono px-1 py-0.2 bg-[#fef9ed] text-[#ae3200] font-bold rounded border border-[#ae3200]/30">4-CUT</span></div><div class="w-7 h-11 bg-[#fef9ed] border border-[#1d1c15] rounded p-0.5 flex flex-col justify-between items-center shadow-inner"><div class="w-full h-1.5 bg-[#454936] rounded-xs"></div><div class="w-full h-1.5 bg-[#454936] rounded-xs"></div><div class="w-full h-1.5 bg-[#454936] rounded-xs"></div><div class="w-full h-1.5 bg-[#454936] rounded-xs"></div><div class="w-full h-0.5 bg-[#ae3200]/50"></div></div><div class="flex flex-col items-center leading-none mt-0.5"><span class="text-[8px] font-bold uppercase text-[#1d1c15]">CLASSIC 4-CUT</span><span class="text-[7px] text-[#454936] font-mono">STRIP // 4P</span></div></button><button class="layout-btn bg-white/70 border border-[#516600]/40 text-[#161e00] p-1.5 rounded flex flex-col items-center gap-1 hover:bg-white transition-all relative text-left group" onclick="selectTemplate(this, 'ARCADE QUAD', '57x140mm // 4 POSES')" type="button"><div class="flex items-center justify-between w-full"><span class="w-1.5 h-1.5 rounded-full bg-outline shadow-inner"></span><span class="text-[7px] font-mono px-1 py-0.2 bg-[#fef9ed] text-[#454936] font-bold rounded border border-outline-variant">2x2</span></div><div class="w-9 h-11 bg-[#fef9ed] border border-[#1d1c15] rounded p-0.5 grid grid-cols-2 gap-0.5 shadow-inner items-center"><div class="w-full h-3.5 bg-[#454936] rounded-xs"></div><div class="w-full h-3.5 bg-[#454936] rounded-xs"></div><div class="w-full h-3.5 bg-[#454936] rounded-xs"></div><div class="w-full h-3.5 bg-[#454936] rounded-xs"></div></div><div class="flex flex-col items-center leading-none mt-0.5"><span class="text-[8px] font-bold uppercase text-[#1d1c15]">ARCADE QUAD</span><span class="text-[7px] text-[#454936] font-mono">2x2 GRID // 4P</span></div></button><button class="layout-btn bg-white/70 border border-[#516600]/40 text-[#161e00] p-1.5 rounded flex flex-col items-center gap-1 hover:bg-white transition-all relative text-left group" onclick="selectTemplate(this, 'WIDE POLAROID', '57x90mm // 1 POSE')" type="button"><div class="flex items-center justify-between w-full"><span class="w-1.5 h-1.5 rounded-full bg-outline shadow-inner"></span><span class="text-[7px] font-mono px-1 py-0.2 bg-[#fef9ed] text-[#454936] font-bold rounded border border-outline-variant">1-POSE</span></div><div class="w-9 h-11 bg-[#fef9ed] border border-[#1d1c15] rounded p-0.5 flex flex-col justify-between items-center shadow-inner"><div class="w-full h-6 bg-[#454936] rounded-xs"></div><div class="w-full h-2 bg-[#dedace] rounded-xs flex items-center justify-center"><div class="w-4 h-0.5 bg-[#757964]/60"></div></div></div><div class="flex flex-col items-center leading-none mt-0.5"><span class="text-[8px] font-bold uppercase text-[#1d1c15]">WIDE POLAROID</span><span class="text-[7px] text-[#454936] font-mono">RETRO CARD // 1P</span></div></button></div></div>
+<!-- Insert Coin Button -->
+<div class="pt-1">
+<button class="w-full bg-[#fd591e] hover:bg-[#ae3200] text-white px-3 py-2 rounded font-bold text-[11px] uppercase tracking-wider flex items-center justify-between shadow-[0_2px_0_#852400] active:translate-y-0.5 active:shadow-none transition-all" onclick="play8BitBeep(780, 0.15)">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] animate-bounce">sports_esports</span>
+<span>INSERT COIN // START 1P BOOTH</span>
+</div>
+<span class="bg-[#1d1c15] text-[#ccf157] px-1.5 py-0.5 rounded font-mono text-[9px] font-bold">1 CREDIT</span>
+</button>
+</div>
+</div>
+<!-- Right Box: Viewfinder Preview -->
+<div class="md:col-span-5 bg-[#fef9ed] border border-[#516600]/40 rounded-lg p-2.5 text-[#1d1c15] shadow flex flex-col gap-1.5">
+<div class="flex items-center justify-between border-b border-dashed border-[#757964]/50 pb-1 text-[9px] uppercase font-bold text-[#454936]">
+<span>OPTICAL VIEWFINDER</span>
+<span>#CAM-01 ACTIVE</span>
+</div>
+<div class="w-full h-20 bg-[#1d1c15] rounded p-2 flex flex-col justify-between border border-[#516600] relative overflow-hidden">
+<div class="flex justify-between items-center text-[#ccf157] text-[8px] font-mono">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                      REC READY
+                    </span>
+<span>128 x 112 px</span>
+</div>
+<!-- Crosshair overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
+<div class="w-6 h-6 border border-[#ccf157] flex items-center justify-center">
+<div class="w-1 h-1 bg-[#ccf157] rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-white text-[8px] z-10 font-bold uppercase">
+<span class="bg-[#ae3200] px-1 py-0.2 rounded text-[8px]" id="active-template-badge">4-STRIP VERTICAL</span>
+<span class="text-[#ccf157]">MONO DITHER</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-[9px] text-on-surface-variant font-bold uppercase pt-1 border-t border-dashed border-[#757964]/40">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[13px]">print</span>
+                    THERMAL PRINTER READY
+                  </span>
+<span class="font-mono text-secondary">FEED: OK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Handheld Lower Control Deck (D-Pad, Action Buttons, Speaker Slits) -->
+<div class="flex items-center justify-between px-2 pt-1">
+<!-- Molded D-Pad -->
+<div class="flex items-center gap-3">
+<div class="relative w-14 h-14 flex items-center justify-center">
+<div class="absolute w-14 h-4.5 bg-[#323129] rounded shadow-[0_2px_0_#1d1c15]"></div>
+<div class="absolute w-4.5 h-14 bg-[#323129] rounded shadow-[0_2px_0_#1d1c15]"></div>
+<div class="absolute w-3.5 h-3.5 rounded-full bg-[#1d1c15]/60 shadow-inner z-10"></div>
+<button class="absolute top-0 w-4 h-4 flex items-center justify-center text-surface-container active:scale-90 z-20" onclick="play8BitBeep(320, 0.04)">
+<span class="material-symbols-outlined text-[12px]">arrow_drop_up</span>
+</button>
+<button class="absolute bottom-0 w-4 h-4 flex items-center justify-center text-surface-container active:scale-90 z-20" onclick="play8BitBeep(320, 0.04)">
+<span class="material-symbols-outlined text-[12px]">arrow_drop_down</span>
+</button>
+<button class="absolute left-0 w-4 h-4 flex items-center justify-center text-surface-container active:scale-90 z-20" onclick="play8BitBeep(320, 0.04)">
+<span class="material-symbols-outlined text-[12px]">arrow_left</span>
+</button>
+<button class="absolute right-0 w-4 h-4 flex items-center justify-center text-surface-container active:scale-90 z-20" onclick="play8BitBeep(320, 0.04)">
+<span class="material-symbols-outlined text-[12px]">arrow_right</span>
+</button>
+</div>
+<div class="hidden sm:flex flex-col">
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-wider leading-none">RETRO BOOTH</span>
+<span class="text-[8px] text-on-surface-variant font-mono uppercase mt-0.5">STEREO COMM 16Ω</span>
+</div>
+</div>
+<!-- Select & Start Buttons -->
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-center gap-0.5">
+<button class="w-7 h-2 bg-[#454936] rounded-full rotate-[-25deg] shadow-[0_1px_0_#1d1c15] active:translate-y-0.5 transition-transform" onclick="play8BitBeep(400, 0.05)"></button>
+<span class="text-[8px] font-bold text-on-surface-variant uppercase mt-1">SELECT</span>
+</div>
+<div class="flex flex-col items-center gap-0.5">
+<button class="w-7 h-2 bg-[#454936] rounded-full rotate-[-25deg] shadow-[0_1px_0_#1d1c15] active:translate-y-0.5 transition-transform" onclick="play8BitBeep(450, 0.05)"></button>
+<span class="text-[8px] font-bold text-on-surface-variant uppercase mt-1">START</span>
+</div>
+</div>
+<!-- A / B Buttons & Speaker Grille -->
+<div class="flex items-center gap-3">
+<!-- Speaker Slits -->
+<div class="hidden md:flex gap-1 rotate-[-30deg] opacity-70">
+<span class="w-1 h-7 bg-[#454936] rounded-full"></span>
+<span class="w-1 h-7 bg-[#454936] rounded-full"></span>
+<span class="w-1 h-7 bg-[#454936] rounded-full"></span>
+</div>
+<!-- B & A Buttons -->
+<div class="flex items-center gap-2">
+<div class="flex flex-col items-center gap-0.5">
+<button class="w-8 h-8 rounded-full bg-[#ae3200] text-white font-bold text-xs flex items-center justify-center shadow-[0_2px_0_#521300] active:translate-y-0.5 active:shadow-none transition-all" onclick="play8BitBeep(480, 0.08)">B</button>
+<span class="text-[8px] font-bold text-on-surface uppercase">BACK</span>
+</div>
+<div class="flex flex-col items-center gap-0.5 -mt-2">
+<button class="w-8 h-8 rounded-full bg-[#fd591e] text-white font-bold text-xs flex items-center justify-center shadow-[0_2px_0_#852400] active:translate-y-0.5 active:shadow-none transition-all" onclick="play8BitBeep(640, 0.08)">A</button>
+<span class="text-[8px] font-bold text-on-surface uppercase">ENTER</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Strip -->
+<div class="w-full grid grid-cols-3 gap-2 text-[10px] mt-2">
+<div class="bg-surface-container px-2 py-1 rounded border border-outline-variant/40 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">sensors</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] text-on-surface-variant uppercase">ONLINE PAIRS</span>
+<span class="font-bold text-on-surface font-mono text-[10px] mt-0.5">1,429 LINKED</span>
+</div>
+</div>
+<div class="bg-surface-container px-2 py-1 rounded border border-outline-variant/40 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">receipt_long</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] text-on-surface-variant uppercase">DISPATCHED</span>
+<span class="font-bold text-on-surface font-mono text-[10px] mt-0.5">34,810 STRIPS</span>
+</div>
+</div>
+<div class="bg-surface-container px-2 py-1 rounded border border-outline-variant/40 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[16px]">memory</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] text-on-surface-variant uppercase">CHASSIS ROM</span>
+<span class="font-bold text-tertiary font-mono text-[10px] mt-0.5">STATUS [OK]</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BOTTOM HARDWARE FOOTER -->
+<footer class="w-full shrink-0 bg-surface-container-low py-1 border-t border-outline-variant/50 text-[9px] text-on-surface-variant">
+<div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="tracking-wider uppercase">CO-OP HARDWARE LINK TERMINAL © 1998-2025 PORTABLE APPLIANCE CORP.</span>
+</div>
+<div class="hidden sm:flex items-center gap-3 font-mono">
+<span>SLOT-A: [ROM LOADED]</span>
+<span class="text-primary font-bold">16-PIN COMM BUS</span>
+</div>
+</div>
+</footer>
+</body></html>
+

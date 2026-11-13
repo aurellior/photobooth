@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CO-OP BOOTH 98 - Live Booth [Dual Cam]</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#516600",
+            "on-primary-fixed": "#161e00",
+            "secondary-fixed": "#ffdbd0",
+            "on-primary-container": "#2e3c00",
+            "surface-bright": "#fef9ed",
+            "on-surface": "#1d1c15",
+            "on-primary-fixed-variant": "#3c4d00",
+            "surface-container": "#f2eee1",
+            "primary-fixed-dim": "#b1d43d",
+            "surface-container-highest": "#e6e2d6",
+            "tertiary-container": "#7eab75",
+            "background": "#dedace",
+            "surface-variant": "#e6e2d6",
+            "on-tertiary-container": "#163f15",
+            "error-container": "#ffdad6",
+            "surface-dim": "#dedace",
+            "on-surface-variant": "#454936",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#ece8dc",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#521300",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "outline": "#757964",
+            "on-tertiary-fixed-variant": "#275024",
+            "secondary": "#ae3200",
+            "inverse-primary": "#b1d43d",
+            "primary-container": "#8bac0f",
+            "inverse-on-surface": "#f5f1e4",
+            "on-secondary-fixed-variant": "#852400",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#a4d39a",
+            "tertiary": "#3f6839",
+            "outline-variant": "#c5c9b1",
+            "secondary-container": "#fd591e",
+            "surface-container-low": "#f8f3e7",
+            "primary": "#516600",
+            "surface": "#fef9ed",
+            "tertiary-fixed": "#bfefb4",
+            "primary-fixed": "#ccf157",
+            "inverse-surface": "#23221c",
+            "on-background": "#1d1c15",
+            "on-tertiary-fixed": "#002202",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#ffb59e",
+            "on-secondary-fixed": "#3a0b00"
+          },
+          fontFamily: {
+            "mono": ["Space Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Space Mono', monospace;
+      user-select: none;
+    }
+    .crt-scanlines {
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.35) 50%
+      ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.04),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.04)
+      );
+      background-size: 100% 3px, 6px 100%;
+    }
+  </style>
+</head>
+<body class="bg-[#dedace] text-[#1d1c15] h-screen w-screen overflow-hidden flex flex-col justify-between">
+<!-- SLIM TOP NAVIGATION HEADER (approx 40px) -->
+<header class="w-full flex-shrink-0 z-50 bg-[#ece8dc] border-b border-[#757964]/20 shadow-sm">
+<div class="h-10 max-w-7xl mx-auto px-3 md:px-6 flex items-center justify-between gap-3">
+<!-- Title & Link Status -->
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-[#516600] text-white flex items-center justify-center font-bold text-[11px] rounded shadow-inner">
+          98
+        </div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-xs tracking-tight uppercase leading-none text-[#1d1c15]">CO-OP BOOTH 98</span>
+<span class="hidden sm:inline text-[9px] text-[#454936] tracking-wider uppercase border-l border-[#c5c9b1] pl-2">LINK v2.4</span>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 px-2 py-0.5 bg-[#f2eee1] border border-[#c5c9b1] rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-[#516600] animate-pulse"></span>
+<span class="text-[8px] text-[#516600] font-bold uppercase tracking-wider">LOCKED</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex items-center gap-1 bg-[#f2eee1] p-0.5 rounded border border-[#c5c9b1]">
+<a class="px-2 py-0.5 text-[9px] text-[#454936] hover:bg-[#e6e2d6] hover:text-[#1d1c15] rounded uppercase font-bold" href="#">1. LOBBY</a>
+<a class="px-2 py-0.5 text-[9px] bg-[#8bac0f] text-[#2e3c00] font-bold rounded shadow-sm uppercase" href="#">2. LIVE BOOTH [DUAL]</a>
+<a class="px-2 py-0.5 text-[9px] text-[#454936] hover:bg-[#e6e2d6] hover:text-[#1d1c15] rounded uppercase font-bold" href="#">3. RECEIPT PRINTER</a>
+</nav>
+<!-- Right Telemetry Badges -->
+<div class="flex items-center gap-2">
+<div class="hidden md:flex items-center gap-2 text-[9px] leading-none">
+<span class="text-[#ae3200] font-bold uppercase">[THERMAL MATRIX]</span>
+<span class="text-[#454936] uppercase font-mono">3V DC</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-6 h-6 bg-[#f2eee1] hover:bg-[#e6e2d6] border border-[#c5c9b1] text-[#454936] rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">volume_up</span>
+</button>
+<div class="w-6 h-6 rounded-full bg-[#516600] flex items-center justify-center text-white shadow-sm font-bold text-[10px]">
+            P1
+          </div>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN MONITOR WELL (TALL, UNCLUTTERED, MAX VIEWPORT HEIGHT) -->
+<main class="w-full flex-1 min-h-0 px-3 md:px-6 py-1.5 max-w-7xl mx-auto flex flex-col gap-1.5">
+<!-- ULTRA-COMPACT INTEGRATED SUB-BAR: Exposure Reel + Status + Countdown -->
+<div class="w-full bg-[#ece8dc] rounded border border-[#c5c9b1] px-2.5 py-1 flex items-center justify-between shadow-sm flex-shrink-0">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-sm bg-[#fd591e] animate-ping"></span>
+<span class="text-[9px] font-bold text-[#ae3200] tracking-wide uppercase">[1-BIT DITHER MATRIX]</span>
+</div>
+<span class="text-[9px] text-[#454936] hidden sm:inline uppercase">PARALLEL SYNC: 60FPS</span>
+</div>
+<!-- 4-Frame Reel Counter -->
+<div class="flex items-center gap-1.5">
+<span class="text-[9px] text-[#454936] font-bold uppercase">FILM STRIP:</span>
+<div class="flex items-center gap-1">
+<div class="bg-[#516600] text-white px-2 py-0.5 rounded text-[8px] font-bold flex items-center gap-1 shadow-sm">
+<span>#01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#ccf157] animate-pulse"></span>
+</div>
+<div class="bg-[#f2eee1] text-[#454936] border border-[#c5c9b1] px-1.5 py-0.5 rounded text-[8px] opacity-75 font-bold">#02</div>
+<div class="bg-[#f2eee1] text-[#454936] border border-[#c5c9b1] px-1.5 py-0.5 rounded text-[8px] opacity-75 font-bold">#03</div>
+<div class="bg-[#f2eee1] text-[#454936] border border-[#c5c9b1] px-1.5 py-0.5 rounded text-[8px] opacity-75 font-bold">#04</div>
+</div>
+</div>
+<!-- Compact Sync Clock HUD -->
+<div class="flex items-center gap-1.5 bg-[#23221c] text-[#f5f1e4] px-2 py-0.5 rounded border border-[#454936]">
+<span class="text-[8px] text-[#a4d39a] uppercase font-bold tracking-wider">AUTO-SNAP</span>
+<span class="text-xs font-bold text-[#fd591e] tracking-widest font-mono" id="countdown-val">03</span>
+</div>
+</div>
+<!-- CRT DUAL MONITOR WELL (EXPANDED TO MAXIMUM AVAILABLE VERTICAL ROOM) -->
+<div class="w-full flex-1 min-h-0 bg-[#23221c] rounded-xl p-2 shadow-2xl border-4 border-[#323129] relative flex flex-col justify-between overflow-hidden">
+<!-- CRT Top Bezel HUD -->
+<div class="flex items-center justify-between pb-1 text-[#f5f1e4] text-[9px] flex-shrink-0 z-20 border-b border-[#454936]/40">
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 px-1.5 py-0.5 bg-[#ba1a1a] text-white rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+<span class="font-bold tracking-wider uppercase text-[8px]">REC [LIVE]</span>
+</div>
+<span class="text-[#c5c9b1] uppercase font-mono text-[8px]">1998-10-24 21:42:08 JST</span>
+</div>
+<div class="hidden sm:flex items-center gap-3 text-[8px]">
+<span class="text-[#bfefb4] font-bold">LINK BUS: FULL-DUPLEX</span>
+<span class="text-[#ccf157]">LATENCY: 14ms</span>
+<span class="text-[#ffb59e]">FRAME BUFFER: OK</span>
+</div>
+</div>
+<!-- Viewports Grid (Side-by-Side Dual Cam, Taller Portrait Framing) -->
+<div class="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-2 relative my-1 items-stretch" id="viewport-grid">
+<!-- P1 Viewport (Tokyo) -->
+<div class="relative rounded-lg overflow-hidden border-2 border-[#516600]/80 bg-[#161e00] flex flex-col justify-between shadow-inner h-full min-h-0">
+<!-- Background Retro Dithered Image -->
+<img alt="P1 Retro Gamer Photo Preview" class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity contrast-125 filter grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAySqM6fDv7AeZ15-f4RDT_5TqCufI7E-mfDgRKFeg4vU94unJc9LjNpgBVU_HEeMppFXFeEJ7TzjNVhVIx_5xeW24pLkIlvmE9EE_6beP4vHC_hLiFNWZh-hjZYbSwJPatoXHwqeOB_or092-HwjlKhJxRWEB92mzm0BDUqdokXPPSd88U6Uv7xjJmTRmc2smsZyf3fxtD7mk2b_QeG-z5q4yc-ow8if1gsvk2nr0"/>
+<div class="absolute inset-0 bg-[#8bac0f]/20 mix-blend-color pointer-events-none"></div>
+<div class="absolute inset-0 crt-scanlines pointer-events-none"></div>
+<!-- Top HUD Overlay -->
+<div class="relative z-10 flex items-center justify-between bg-black/75 px-2 py-0.5 text-white m-1 rounded border border-[#516600]">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#ccf157] text-[14px]">videocam</span>
+<span class="text-[9px] font-bold text-[#ccf157] uppercase tracking-wider">P1 [YOU / TOKYO-01]</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-[8px] text-[#c5c9b1] font-mono">640x480</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#ccf157] animate-pulse"></span>
+</div>
+</div>
+<!-- Crosshairs / Reticle -->
+<div class="relative z-10 w-full flex-1 flex flex-col justify-between p-2 pointer-events-none">
+<div class="flex justify-between items-start">
+<div class="w-4 h-4 border-t-2 border-l-2 border-[#ccf157]"></div>
+<div class="w-4 h-4 border-t-2 border-r-2 border-[#ccf157]"></div>
+</div>
+<!-- Center Focus Box -->
+<div class="self-center flex flex-col items-center">
+<div class="w-10 h-10 border border-[#ccf157]/60 rounded-sm flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-[#ccf157]"></span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div class="w-4 h-4 border-b-2 border-l-2 border-[#ccf157]"></div>
+<div class="w-4 h-4 border-b-2 border-r-2 border-[#ccf157]"></div>
+</div>
+</div>
+<!-- Bottom Sub-HUD -->
+<div class="relative z-10 flex items-center justify-between bg-black/75 px-2 py-0.5 text-white m-1 rounded border border-[#516600]">
+<span class="text-[8px] text-[#ccf157] font-bold uppercase">[TX ACTIVE] GAIN: +6dB</span>
+<span class="text-[8px] text-[#c5c9b1] uppercase font-mono">160x144 DITHER</span>
+</div>
+</div>
+<!-- P2 Viewport (Osaka) -->
+<div class="relative rounded-lg overflow-hidden border-2 border-[#ae3200]/80 bg-[#3a0b00] flex flex-col justify-between shadow-inner h-full min-h-0" id="p2-container">
+<!-- Background Retro Dithered Image -->
+<img alt="P2 Remote Friend Photo Preview" class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity contrast-125 filter grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsyvpL_5Kfy6KYw3XcFZPE2g66V_KTEdbY-JJSi6L4qzH9KRdRUyezruwThY8RDGxNQkhG9FU4KMJ42WAcqOudtb8XpGHkda3a8Y3xFxZ5bS1LEj9fN6kf8SZJK3EvTZ95uSJL-bSmUDJ8RXr5Gh2m7rjXTIHmQTWPMy3fZwYsxMypw4ivjNMTCUI0w2L5a-I6HpnMraxNkW9bApsc1HT-qCAANFcZ2xbeb9GuVi0"/>
+<div class="absolute inset-0 bg-[#fd591e]/20 mix-blend-color pointer-events-none"></div>
+<div class="absolute inset-0 crt-scanlines pointer-events-none"></div>
+<!-- Top HUD Overlay -->
+<div class="relative z-10 flex items-center justify-between bg-black/75 px-2 py-0.5 text-white m-1 rounded border border-[#ae3200]">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#ffb59e] text-[14px]">satellite_alt</span>
+<span class="text-[9px] font-bold text-[#ffb59e] uppercase tracking-wider">P2 [ALEX_98 / OSAKA-04]</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-[8px] text-[#c5c9b1] font-mono">LINKED</span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#ffb59e] animate-ping"></span>
+</div>
+</div>
+<!-- Crosshairs / Reticle -->
+<div class="relative z-10 w-full flex-1 flex flex-col justify-between p-2 pointer-events-none">
+<div class="flex justify-between items-start">
+<div class="w-4 h-4 border-t-2 border-l-2 border-[#ffb59e]"></div>
+<div class="w-4 h-4 border-t-2 border-r-2 border-[#ffb59e]"></div>
+</div>
+<!-- Center Focus Box -->
+<div class="self-center flex flex-col items-center">
+<div class="w-10 h-10 border border-[#ffb59e]/60 rounded-sm flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-[#ffb59e]"></span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div class="w-4 h-4 border-b-2 border-l-2 border-[#ffb59e]"></div>
+<div class="w-4 h-4 border-b-2 border-r-2 border-[#ffb59e]"></div>
+</div>
+</div>
+<!-- Bottom Sub-HUD -->
+<div class="relative z-10 flex items-center justify-between bg-black/75 px-2 py-0.5 text-white m-1 rounded border border-[#ae3200]">
+<span class="text-[8px] text-[#ffb59e] font-bold uppercase">[RX SYNCED] 18ms</span>
+<span class="text-[8px] text-[#c5c9b1] uppercase font-mono">B-CHANNEL OK</span>
+</div>
+</div>
+<!-- Center Link Cable Badge -->
+<div class="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex-col items-center bg-[#23221c]/90 backdrop-blur-sm border-2 border-[#8bac0f] text-white px-2.5 py-0.5 rounded shadow-xl" id="center-link-badge">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#ccf157] text-[14px] animate-spin">sync</span>
+<span class="text-[8px] font-bold tracking-widest text-[#ccf157] uppercase">DUAL LINK</span>
+</div>
+</div>
+</div>
+<!-- Bottom CRT Monitor Sub-Status Bar -->
+<div class="flex items-center justify-between text-[#c5c9b1] text-[8px] uppercase tracking-wider bg-black/60 px-2.5 py-0.5 rounded border border-[#454936]/40 flex-shrink-0">
+<div class="flex items-center gap-3">
+<span class="text-[#bfefb4]">STN-NET: ESTABLISHED</span>
+<span>DITHER: ATKINSON-98</span>
+<span class="text-[#ffb59e] hidden sm:inline">STROBE: CHARGED (300V)</span>
+</div>
+<div class="flex items-center gap-2">
+<span>PORT: 0x378</span>
+<span class="font-bold text-[#ccf157]">BUFFER: 100%</span>
+</div>
+</div>
+</div>
+<!-- STREAMLINED UNIFIED LOW-PROFILE HARDWARE CONSOLE DECK -->
+<div class="w-full bg-[#ece8dc] rounded-lg px-3 py-1.5 shadow-md border border-[#c5c9b1] flex items-center justify-between gap-2 flex-shrink-0">
+<!-- Left: Tactile Filter Bank (Compact buttons) -->
+<div class="flex items-center gap-1.5">
+<div class="hidden sm:flex flex-col text-left leading-none pr-1">
+<span class="text-[8px] font-bold uppercase text-[#454936]">FILTER</span>
+<span class="text-[7px] text-[#516600] uppercase font-bold">[BANK A]</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="bg-[#516600] text-white py-1 px-2 rounded text-[8px] font-bold uppercase shadow-inner border border-[#3c4d00]">BAYER</button>
+<button class="bg-[#f2eee1] text-[#454936] hover:bg-[#dedace] py-1 px-2 rounded text-[8px] font-bold uppercase border border-[#c5c9b1]">160x144</button>
+<button class="bg-[#f2eee1] text-[#454936] hover:bg-[#dedace] py-1 px-2 rounded text-[8px] font-bold uppercase border border-[#c5c9b1]">HALFTONE</button>
+<button class="bg-[#f2eee1] text-[#454936] hover:bg-[#dedace] py-1 px-2 rounded text-[8px] font-bold uppercase border border-[#c5c9b1] hidden sm:inline-block">CCTV '04</button>
+</div>
+</div>
+<!-- Center: Big Shutter Trigger -->
+<div class="flex items-center gap-2.5">
+<div class="w-11 h-11 rounded-full bg-[#dedace] p-0.5 flex items-center justify-center border-2 border-[#c5c9b1] shadow-inner">
+<button class="w-9 h-9 rounded-full bg-[#fd591e] hover:bg-[#ae3200] text-white flex flex-col items-center justify-center shadow-[0_2px_0_#852400] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[15px]">camera</span>
+<span class="text-[7px] font-bold uppercase tracking-tight leading-none">SNAP</span>
+</button>
+</div>
+<div class="hidden lg:flex flex-col text-left leading-tight">
+<span class="text-[10px] font-bold text-[#ae3200] uppercase tracking-wide">SYNC STROBE</span>
+<span class="text-[8px] text-[#516600] font-bold uppercase">SIMULTANEOUS FIRE</span>
+</div>
+</div>
+<!-- Right: 1P SOLO vs 2P CO-OP Scheme Selector & Session Badge -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 bg-[#f2eee1] p-0.5 rounded border border-[#c5c9b1]">
+<button class="flex items-center gap-1 bg-[#fd591e] text-white py-1 px-2 rounded text-[8px] font-bold uppercase shadow-sm transition" id="btn-2p" onclick="toggleLayout('2p')">
+<span class="material-symbols-outlined text-[12px]">splitscreen</span> 2P CO-OP
+</button>
+<button class="flex items-center gap-1 bg-transparent text-[#454936] hover:bg-[#dedace] py-1 px-2 rounded text-[8px] font-bold uppercase transition" id="btn-1p" onclick="toggleLayout('1p')">
+<span class="material-symbols-outlined text-[12px]">fullscreen</span> 1P SOLO
+</button>
+</div>
+<div class="hidden md:flex items-center gap-1 text-[8px] font-mono text-[#454936] bg-[#f2eee1] px-2 py-1 rounded border border-[#c5c9b1]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#516600]"></span>
+<span class="font-bold">57mm LOADED</span>
+</div>
+</div>
+</div>
+</main>
+<!-- SLIM HARDWARE FOOTER -->
+<footer class="w-full flex-shrink-0 bg-[#e6e2d6] border-t border-[#c5c9b1] py-1 px-3 md:px-6">
+<div class="max-w-7xl mx-auto flex items-center justify-between text-[8px] text-[#454936] uppercase font-mono">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1">
+<div class="w-2.5 h-1 bg-[#757964] rounded-full"></div>
+<div class="w-2.5 h-1 bg-[#757964] rounded-full"></div>
+<div class="w-2.5 h-1 bg-[#757964] rounded-full"></div>
+</div>
+<span>CO-OP PHOTO BOOTH SYSTEM 98 // APPLIANCE UNIT</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[#454936]">SESSION: #CB98-DUAL</span>
+<span class="text-[#516600] font-bold">STATION: ONLINE [CH-01/CH-02]</span>
+</div>
+</div>
+</footer>
+<script>
+  function toggleLayout(mode) {
+    const grid = document.getElementById('viewport-grid');
+    const p2 = document.getElementById('p2-container');
+    const badge = document.getElementById('center-link-badge');
+    const btn1p = document.getElementById('btn-1p');
+    const btn2p = document.getElementById('btn-2p');
+
+    if (mode === '1p') {
+      grid.classList.remove('md:grid-cols-2');
+      grid.classList.add('grid-cols-1');
+      p2.classList.add('hidden');
+      if (badge) badge.classList.add('hidden');
+
+      btn1p.className = 'flex items-center gap-1 bg-[#fd591e] text-white py-1 px-2 rounded text-[8px] font-bold uppercase shadow-sm transition';
+      btn2p.className = 'flex items-center gap-1 bg-transparent text-[#454936] hover:bg-[#dedace] py-1 px-2 rounded text-[8px] font-bold uppercase transition';
+    } else {
+      grid.classList.remove('grid-cols-1');
+      grid.classList.add('md:grid-cols-2');
+      p2.classList.remove('hidden');
+      if (badge) badge.classList.remove('hidden');
+
+      btn2p.className = 'flex items-center gap-1 bg-[#fd591e] text-white py-1 px-2 rounded text-[8px] font-bold uppercase shadow-sm transition';
+      btn1p.className = 'flex items-center gap-1 bg-transparent text-[#454936] hover:bg-[#dedace] py-1 px-2 rounded text-[8px] font-bold uppercase transition';
+    }
+  }
+</script>
+</body></html>
+
